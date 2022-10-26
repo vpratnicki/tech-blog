@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
     });
 });
 
+// find user by id
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ["password"] },
@@ -47,6 +48,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// create new user
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
@@ -60,7 +62,7 @@ router.post("/", (req, res) => {
     });
 });
 
-// PUT request
+// Update user
 router.put('/:id', (req, res) => {
     User.update(req.body, {
       individualHooks: true,
