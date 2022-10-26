@@ -9,8 +9,8 @@ Post.init({
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        primaryKey: true,
         autoIncrement: true,
-        primaryKey: true
     },
     title: {
         type: DataTypes.STRING,
@@ -18,10 +18,7 @@ Post.init({
     },
     post_text: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            isUrl: true
-        }
+        allowNull: false
     },
     user_id: {
         type: DataTypes.INTEGER,

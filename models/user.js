@@ -8,7 +8,7 @@ class User extends Model {}
 //define table columns 
 User.init({
     id: {
-        Type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
