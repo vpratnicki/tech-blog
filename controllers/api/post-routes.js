@@ -64,11 +64,13 @@ router.get('/:id', (req, res) => {
       });
   });
 
+// create posts
   router.post('/', (req, res) => {
     Post.create({
       title: req.body.title,
-      post_url: req.body.post_url,
-      user_id: req.body.user_id
+      post_text: req.body.post_text,
+      user_id: req.body.user_id,
+      comment_id: req.body.comment_id
     })
       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
@@ -77,4 +79,52 @@ router.get('/:id', (req, res) => {
       });
   });
 
-  module.exports = router;
+// update posts
+router.put('/:id', (req, res) => {
+  Post.update(
+    {
+      title: req.body.title,
+      post_text: req.body.post_text,
+      user_id: req.body.user_id,
+      comment_id: req.body.comment_id
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+  .then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No post found with this id' });
+      return;
+    }
+    res.json(dbPostData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+// delete posts
+router.delete('/:id', (req, res) => {
+  Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+module.exports = router;
