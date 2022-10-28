@@ -29,7 +29,13 @@ router.post('/', (req, res) => {
 
 // update comments
 router.put('/:id', (req, res) => {
-    Comment.update(req.body, {
+    Comment.update(
+      {
+        comment_text: req.body.comment_text,
+        user_id: req.body.user_id,
+        post_id: req.body.post_id
+      },
+      {
       where: {
         id: req.params.id
       }
