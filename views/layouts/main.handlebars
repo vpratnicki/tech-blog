@@ -16,8 +16,11 @@
       </h1>
     </header>
       <nav>
+        {{#if loggedIn}}
         <button id="logout" class="btn-no-style">logout</button>
+        {{else}}
         <a href="/login">Login</a>
+        {{/if}}
       </nav>
     <main>
       {{{ body }}}
@@ -26,8 +29,10 @@
       Thanks for visiting!
     </footer>
   </div>
-  
+
+{{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
+{{/if}}
 </body>
 
 </html>
