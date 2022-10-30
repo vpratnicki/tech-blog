@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const withAuth = require('../utils/auth');
+const withAuth = require('../../utils/auth');
 const { User, Post, Comment } = require('../../models');
 
 
@@ -73,7 +73,7 @@ router.post("/", withAuth, (req, res) => {
 });
 
 // login route
-router.post('/login', withAuth, (req, res) => {
+router.post('/login', (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
@@ -103,7 +103,7 @@ router.post('/login', withAuth, (req, res) => {
 });
 
 //logout route
-router.post('/logout', withAuth, (req, res) => {
+router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
