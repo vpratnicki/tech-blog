@@ -5,31 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Blog</title>
+  <script src="https://kit.fontawesome.com/a83a779a41.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Public+Sans:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poiret+One&family=Public+Sans:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
-  <div class="wrapper">
+  
     <header>
-      <h1>
-        <a href="/">Tech Blog</a>
-      </h1>
+      <div class="jumbotron p-4 jumbotron-fluid bg-dark" style="margin-bottom: 0px">
+      <h1 class="display-3 page-title">Tech Blog</h1>
+      </div>
     </header>
       <nav>
+        <ul class="nav justify-content-center nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a></li>
         {{#if loggedIn}}
-        <a href="/dashboard">Dashboard</a>
-        <button id="logout" class="btn-no-style">Logout</button>
+          <li class="nav-item">
+            <button class="btn-no-style"><a class="nav-link" href="/dashboard">Dashboard</a></button></li>
+          <li class="nav-item">
+            <button id="logout" class="btn-no-style nav-link">Logout</button></li>
         {{else}}
-        <a href="/login">Login</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a></li>
         {{/if}}
+        </ul>
       </nav>
     <main>
       {{{ body }}}
     </main>
     <footer>
-      Thanks for visiting!
+      Created by  <a href="https://github.com/vpratnicki">vpratnicki</a>.
     </footer>
-  </div>
+  
 
 {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
