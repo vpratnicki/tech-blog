@@ -5,9 +5,22 @@
   </h2>
   <form class="edit-post-form">
     <div>
+      <label for="post-title">Title</label>
+      <input type="text" id="post-title" name="post-title" value="{{post.title}}" />
+    </div>
+    <div>
+      <label for="post-text">Text</label>
+      <input id="post-text" name="post-text" value="{{post.post_text}}" />
+    </div>
+
+
+
+
+
+    {{!-- <div>
       <input name="post-title" type="text" value="{{post.title}}" />
       <input name="post-text" type="text" value="{{post.post_text}}" />
-    </div>
+    </div> --}}
     <div>
       by you on {{format_date post.created_at}}
       |
