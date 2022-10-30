@@ -51,7 +51,7 @@ router.get('/:id', (req, res) => {
 });
 
 // create new user
-router.post("/", withAuth, (req, res) => {
+router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -115,7 +115,7 @@ router.post('/logout', (req, res) => {
 });
 
 // Update user
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', (req, res) => {
     User.update(req.body, {
       individualHooks: true,
       where: {
@@ -137,7 +137,7 @@ router.put('/:id', withAuth, (req, res) => {
 
 
 // delete user
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', (req, res) => {
     User.destroy({
       where: {
         id: req.params.id
